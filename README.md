@@ -1,6 +1,30 @@
 # Gen-AI-LLMs
 This repo will hold all docs and code w.r.t Gen-AI-LLM materials
 # Gen-AI-Keywords
+
+1.**LLM** - Large Language Models (LLMs) are foundational machine learning models that use deep learning algorithms to process and understand natural language. These models are trained on massive amounts of text data to learn patterns and entity relationships in the language
+
+2.**Tokenizer** - The first step in any NLP task is to convert given text into tokens. LLMs use 2 types — BPE (Byte pair encoding) and Wordpiece. GPT based models use BPE and BERT based models use WordPiece. Some models also use SentencePiece to get sentence encodings.
+
+3.**Transformer** - A transformer model is a neural network that learns context and thus meaning by tracking relationships in sequential data like the words in this sentence.
+
+4.**Attention** - In LLM, this concept is applied by teaching the model to focus on certain parts of the input data and disregard others to better solve the task at hand.
+
+5.**GPT** - Generative Pre-trained Transformers, commonly known as GPT, are a family of neural network models that uses the transformer architecture
+
+6.**Prompt** - Prompts are the inputs or queries that a user or a program gives to an LLM AI, to get a relevant response from the model.
+
+7.**Prompt Engineering** - Prompt engineering is the process of enhancing the output of large language models (LLMs) like ChatGPT. Carefully crafting input prompts can help the language model understand the information about the input (context) and your desired output.
+
+8.**Hallucination** - LLMs will also sometimes confidently produce information that isn’t real or true, which are typically called “hallucinations”
+
+9.**Context window** - In GPT models, the context window refers to the amount of preceding text that the model can consider when generating a response.
+
+10.**Parameters** - Parameters are the numerical values that chosen by the model. They are learned from data during the training process. The more parameters a model has, the more the model is.
+
+11. **Hyperparameter** - Hyperparameters are the explicitly specified parameters that control the training process. They are essential for optimizing the model. They are set manually by Data Scientist / Machine learning engineer in beginning of training the model
+
+
 # Gen-AI Lifecycle
 Here is diagram of the Gen-AI Lifecycle
 
