@@ -4,7 +4,12 @@ This repo will hold all docs and code w.r.t Gen-AI-LLM materials
 
 1.**LLM** - Large Language Models (LLMs) are foundational machine learning models that use deep learning algorithms to process and understand natural language. These models are trained on massive amounts of text data to learn patterns and entity relationships in the language
 
-2.**Tokenizer** - The first step in any NLP task is to convert given text into tokens. LLMs use 2 types — BPE (Byte pair encoding) and Wordpiece. GPT based models use BPE and BERT based models use WordPiece. Some models also use SentencePiece to get sentence encodings.
+2.**Tokenizer** - The first step in any NLP task is to convert given text into tokens. LLMs use 2 types — BPE (Byte pair encoding) and Wordpiece. GPT based models use BPE and BERT based models use WordPiece. Some models also use SentencePiece to get sentence encodings. Below is hierarchy of Tokenization methods
+
+<img width="491" alt="image" src="https://github.com/ShankarChavan/Gen-AI-LLMs/assets/6409350/6d4581b4-75b2-423c-bcd5-dece6ad67493">
+
+BPE: 
+<img width="220" alt="image" src="https://github.com/ShankarChavan/Gen-AI-LLMs/assets/6409350/6f7c8fdc-5e66-4047-ad1a-0952dd47d1b0">
 
 3.**Transformer** - A transformer model is a neural network that learns context and thus meaning by tracking relationships in sequential data like the words in this sentence.
 
