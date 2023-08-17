@@ -1,7 +1,33 @@
 # Gen-AI-LLMs
-This repo will hold all docs and code w.r.t Gen-AI-LLM course material
+This repo will hold all docs and code w.r.t Gen-AI-LLM materials
 # Gen-AI-Keywords
 # Gen-AI Lifecycle
+Here is diagram of the Gen-AI Lifecycle
+
+![image](https://github.com/ShankarChavan/Gen-AI-LLMs/assets/6409350/3ab65783-56d5-4c2a-bd2f-f14fda6b7dfb)
+
+
+- **Scope**: Defining the scope of LLM as accurately and narrowly is very important w.r.t use-case because LLM's are capable of carrying out multiple tasks based on the size and architecture of model.
+  Getting really specific about what you need your model to do can save you **time** and **compute cost**
+
+  Examples of Specific tasks can be Q & A bot, Text Summarization, or Named-Entity recognition etc. 
+- **Select**: In this stage it's important to decide whether to train our own model from scratch or work with an existing base model.
+- **Adapt & Align Model**: With our model in hand, the next step is to assess its performance and carry out additional training if needed for our application.
+
+  **Prompt engineering** can sometimes be enough to get our model to perform well, so we'll likely start by trying in-context learning, using examples suited to our task and use case.
+
+  There are still cases, however, where the model may not perform as well as we need, even with one or a few shot inference, and in that case, we can try **fine-tuning** our model. This supervised learning process of training LLMs.
+
+  As models become more capable, it's becoming increasingly important to ensure that they behave well and in a way that is aligned with human preferences in deployment. An additional fine-tuning technique called **reinforcement learning with human feedback**, which can help to make sure that your model behaves well.
+
+   An important aspect of all of these techniques is evaluation. We will explore some metrics and benchmarks that can be used to determine how well your model is performing or how well aligned it is to our preferences.
+
+  _Note that this adapt and aligned stage of app development can be **highly iterative or repitative process** until we get model performance stable enough for our criteria and needs._ 
+- **Application Integration**: At this stage, an important step is to **optimize our model for deployment**. Create front-end apps by using our customized LLMs.
+
+**Limitations**: There are some fundamental limitations of LLMs that can be difficult to overcome through training alone like their tendency to invent information when they don't know an answer, or their limited ability to carry out complex reasoning and mathematics.
+  
+
 # Transformers
 
 LLMs-> more parameters -> more memory ->better models
