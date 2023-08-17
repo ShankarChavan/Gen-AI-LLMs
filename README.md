@@ -32,7 +32,7 @@ Here is diagram of the Gen-AI Lifecycle
 
 LLMs-> more parameters -> more memory ->better models
 
-So it's important to understand difference between Parameters & Hyperparameters
+So it's important to understand difference between **Parameters** & **Hyperparameters**
 
 - Parameters are variables that are learned by the model from the data, such as **weights** and **biases**. They allow the model to **learn the rules** from the data. Hence why models with billions of parameters are performing really Good(e.g. GPT(175B),BLOOM(175B)) vs model with millions of parameters(e.g. Bert(110M))
 
@@ -41,6 +41,11 @@ So it's important to understand difference between Parameters & Hyperparameters
 Some examples of parameters are the **attention weights, the feed-forward network weights, and the embeddings**. 
 
 Some examples of hyperparameters are the **number of heads, the hidden size, the dropout rate, and the warmup steps**.
+
+Some of LLM's 
+
+![image](https://github.com/ShankarChavan/Gen-AI-LLMs/assets/6409350/61b4fc16-8887-4034-a6da-a5d28a4fb982)
+
 
  *“[Attention is All You Need](https://arxiv.org/abs/1706.03762)” by Vaswani et al. (2017) was the paper which introduced transformer architecture*
 
@@ -86,6 +91,7 @@ Self-attention is the key attributes of the transformer architecture.Let's dive 
 
 ![image](https://github.com/ShankarChavan/Gen-AI-LLMs/assets/6409350/1e787bd7-8b4b-4825-a7f6-60b3f67d9567)
 
+## In-depth Understanding of Transformer architecture step by step 
 
 # prompt engineering and prompting types
 # Generative Configurations
