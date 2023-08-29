@@ -1,3 +1,6 @@
+
+
+
 # Gen-AI-LLMs
 This repo will hold all docs and code w.r.t Gen-AI-LLM materials
 
@@ -8,11 +11,7 @@ This repo will hold all docs and code w.r.t Gen-AI-LLM materials
 
 2.**Tokenizer** - The first step in any NLP task is to convert given text into tokens. LLMs use 2 types — BPE (Byte pair encoding) and Wordpiece. GPT based models use BPE and BERT based models use WordPiece. Some models also use SentencePiece to get sentence encodings. Below is hierarchy of Tokenization methods
 
-<img width="491" alt="image" src="https://github.com/ShankarChavan/Gen-AI-LLMs/assets/6409350/6d4581b4-75b2-423c-bcd5-dece6ad67493">
-
-BPE:
-
-<img width="220" alt="image" src="https://github.com/ShankarChavan/Gen-AI-LLMs/assets/6409350/6f7c8fdc-5e66-4047-ad1a-0952dd47d1b0">
+![](assets/Tokenization_type.png)
 
 3.**Transformer** - A transformer model is a neural network that learns context and thus meaning by tracking relationships in sequential data like the words in this sentence.
 
@@ -36,7 +35,7 @@ BPE:
 # Gen-AI Lifecycle
 Here is diagram of the Gen-AI Lifecycle
 
-![image](https://github.com/ShankarChavan/Gen-AI-LLMs/assets/6409350/3ab65783-56d5-4c2a-bd2f-f14fda6b7dfb)
+![](/assets/Lifecycle_LLMs.png)
 
 
 - **Scope**: Defining the scope of LLM as accurately and narrowly is very important w.r.t use-case because LLM's are capable of carrying out multiple tasks based on the size and architecture of model.
@@ -54,7 +53,7 @@ Here is diagram of the Gen-AI Lifecycle
 
    An important aspect of all of these techniques is evaluation. We will explore some metrics and benchmarks that can be used to determine how well your model is performing or how well aligned it is to our preferences.
 
-  _Note that this adapt and aligned stage of app development can be **highly iterative or repitative process** until we get model performance stable enough for our criteria and needs._ 
+  _Note that this adapt and aligned stage of app development can be **highly iterative or repetitive process** until we get model performance stable enough for our criteria and needs._ 
 - **Application Integration**: At this stage, an important step is to **optimize our model for deployment**. Create front-end apps by using our customized LLMs.
 
 **Limitations**: There are some fundamental limitations of LLMs that can be difficult to overcome through training alone like their tendency to invent information when they don't know an answer, or their limited ability to carry out complex reasoning and mathematics.
@@ -76,7 +75,7 @@ Some examples of hyperparameters are the **number of heads, the hidden size, the
 
 Some of LLM's 
 
-![image](https://github.com/ShankarChavan/Gen-AI-LLMs/assets/6409350/61b4fc16-8887-4034-a6da-a5d28a4fb982)
+![image](assets/LLM_models.png?raw=true)
 
 
  *“[Attention is All You Need](https://arxiv.org/abs/1706.03762)” by Vaswani et al. (2017) was the paper which introduced transformer architecture*
@@ -91,11 +90,11 @@ The **Power** of LLM's comes from model architecture which was used to train thi
 The power of the transformer architecture lies in its ability to learn the relevance and context of all of the words in a sentence and not just the neighbors.
 
 
-![image](https://github.com/ShankarChavan/Gen-AI-LLMs/assets/6409350/33d2d07a-dc68-4db2-8683-7b548116617f)
+![image](assets/sentence_example_sequence.png)
 
 It applies attention weights to those relationships so that the model learns the relevance of each word to each other words no matter where they are in the input.
 
-![image](https://github.com/ShankarChavan/Gen-AI-LLMs/assets/6409350/504d6151-56e4-4a75-99ea-62300ab30a2e)
+![image](assets/sentence_example_sequence_attn.png)
 
 Based on this sentence itself model has ability to answer following questions:
 
@@ -104,7 +103,7 @@ Based on this sentence itself model has ability to answer following questions:
 
 In a nutshell it has ability to understand the context of document given to it.
 
-![image](https://github.com/ShankarChavan/Gen-AI-LLMs/assets/6409350/9ac47d9c-fd72-4398-9cec-c3622a05e5a9)
+![image](assets/sentence_example_sequence_attn_nodes.png)
 
 In the above diagram we can see that word **book** is strongly connected with or paying attention to the word **teacher** and the word **student**. 
 
@@ -113,17 +112,123 @@ This is called **self-attention** and the ability to learn a attention in this w
 Self-attention is the key attributes of the transformer architecture.Let's dive in on transformer architecture diagram
 
 ### Transformer
-![image](https://github.com/ShankarChavan/Gen-AI-LLMs/assets/6409350/6992c3e4-2d20-4fa6-878d-211c76d0b1b0)
+![image](assets/transformer-architecture-complex.png)
 
 ### Simplified Transformer architecture 
 
-![image](https://github.com/ShankarChavan/Gen-AI-LLMs/assets/6409350/552c2f5e-3bdd-439e-91b7-eda8774a54cf)
+![image](assets/transformer-architecture-simple-1.png)
 
 
 
-![image](https://github.com/ShankarChavan/Gen-AI-LLMs/assets/6409350/1e787bd7-8b4b-4825-a7f6-60b3f67d9567)
+![image](assets/transformer-architecture-simple-2.png)
 
-## In-depth Understanding of Transformer architecture step by step 
+# In-depth Understanding of Transformer architecture step by step 
+
+## Types of transformer models
+
+1. **Encoder only(Auto-encoding)**:
+    Encoder models use only the encoder of a Transformer model. At each stage, the attention layers **can access all the words in the initial sentence**.
+
+    **Objective**: The pretraining of these models usually revolves around somehow corrupting a given sentence (for instance, by masking random words in it) and tasking the model with finding or reconstructing the initial sentence.
+
+
+    |Original text|The|teacher|teaches|the|student|
+    |:-----|:--- |:------- |:------ |:--- |:------- |
+    |MLM(Masked Language modeling)|The|teacher|\<mask>|the|student|
+    |Reconstruct text(denoise)|The|teacher|teaches|the|student|
+    |Bidirectional context|---|----->|teaches|<--|-------|
+
+
+    **Use-cases**: 
+    - Sentiment Analysis
+    - Named Entity Recognition
+    - Word Classification
+    
+    **Models**:
+    - BERT
+    - DistilBERT
+    - RoBERTa
+----
+2. **Encoder-Decoder(Sequence to Sequence)**:
+    Encoder-decoder models (also called sequence-to-sequence models) use both parts of the Transformer architecture. At each stage, the attention layers of the encoder can access all the words in the initial sentence, whereas the attention layers of the **_decoder_ can only access the words positioned before a given word in the input**.
+
+    **Objective**: T5 is pretrained by replacing random spans of text (that can contain several words) with a single mask special word, and the objective is then to predict the text that this mask word replaces.
+
+    |\<span corruption>|The|teacher|\<mask>|\<mask>|student|
+    |:-----|:--- |:------- |:------ |:--- |:------- |
+    |Sentinel token(mask words)|The|teacher|\<x>||student|
+    |Reconstruct span|The|teacher|\<teaches>|\<the>|student|
+
+    **Use-cases**:
+    - Translation
+    - Text Summarization
+    - generative question answering
+
+    **Models**:
+    - BART
+    - T
+----
+3. **Decoder only(autoregressive models)**:
+
+    Decoder models use only the decoder of a Transformer model. At each stage, for a given word the **attention layers can only access the words positioned before it in the sentence**. These models are often called auto-regressive models.
+
+    **Objective**:
+    The pretraining of decoder models usually revolves around **predicting the next word** in the sentence.
+
+    |Original text|The|teacher|teaches|the|student|
+    |:-----|:--- |:------- |:------ |:--- |:------- |
+    |Causal Language Modeling|The|teacher|?|?|?|
+    |Predict Next word|The|teacher|_teaches_|_the_|_student_|
+    |Unidirectional context|---|------|---->
+
+
+    **Use-Cases**:
+    - Text generation
+
+    **Models**:
+    - GPT
+    - GPT2
+    - BLOOM
+    - BARD
+    - CLAUDE
+    - PaLM
+    - LLAMA,LLAMA2
+
+
+----
+# History(Evolution tree) of LLM models
+
+![Alt text](assets/image-1.png)
+
+ The evolutionary tree of modern LLMs traces the development of language models in recent years and highlights some of the
+most well-known models. Models on the same branch have closer relationships. 
+
+Transformer-based models are shown in non-grey
+colors: **decoder-only models in the blue** branch, **encoder-only models in the pink** branch, and **encoder-decoder models in the green**
+branch. 
+
+The vertical position of the models on the timeline represents their release dates. Open-source models are represented by
+solid squares, while closed-source models are represented by hollow ones.
+
+To view the animated view of [evolution tree click here](https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fraw.githubusercontent.com%2FMooler0410%2FLLMsPracticalGuide%2Fmain%2Fsource%2Ffigure_gif.pptx&wdOrigin=BROWSELINK)
+
+The stacked bar plot in the bottom right corner shows the
+number of models from various companies and institutions.
+
+For more details you can refer to this [link](https://arxiv.org/pdf/2304.13712v2.pdf)
+
+[Data-Centric AI](https://towardsdatascience.com/what-are-the-data-centric-ai-concepts-behind-gpt-models-a590071bb727) concepts behind GPT models
+
+Try GPT-2 Transformer out on your own at live this url
+https://transformer.huggingface.co/doc/gpt2-large
+
+
+### Transformer model architecture from Scratch using pytorch [here](transformers-details/transformers_scratch.ipynb)
+
+
+
+
+
 
 # prompt engineering and prompting types
 # Generative Configurations
