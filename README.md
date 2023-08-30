@@ -1,36 +1,21 @@
+<!-- TOC -->
 
+- [Gen-AI Lifecycle](#gen-ai-lifecycle)
+- [Transformers](#transformers)
+    - [Transformers model key-highlights](#transformers-model-key-highlights)
+        - [Transformer](#transformer)
+        - [Simplified Transformer architecture](#simplified-transformer-architecture)
+- [In-depth Understanding of Transformer architecture step by step](#in-depth-understanding-of-transformer-architecture-step-by-step)
+    - [Types of transformer models](#types-of-transformer-models)
+- [HistoryEvolution tree of LLM models](#historyevolution-tree-of-llm-models)
+- [Transformer model code from Scratch](#transformer-model-code-from-scratch)
+- [Prompt engineering and Prompting types](#prompt-engineering-and-prompting-types)
+- [Generative AI Configurations](#generative-ai-configurations)
+- [Fine-tuning LLM's with PEFT & LoRA](#fine-tuning-llms-with-peft--lora)
+- [Fine-tuning LLM's with RLHF](#fine-tuning-llms-with-rlhf)
+- [LLM's in applications](#llms-in-applications)
 
-
-# Gen-AI-LLMs
-This repo will hold all docs and code w.r.t Gen-AI-LLM materials
-
-
-# Gen-AI-Keywords
-
-1.**LLM** - Large Language Models (LLMs) are foundational machine learning models that use deep learning algorithms to process and understand natural language. These models are trained on massive amounts of text data to learn patterns and entity relationships in the language
-
-2.**Tokenizer** - The first step in any NLP task is to convert given text into tokens. LLMs use 2 types — BPE (Byte pair encoding) and Wordpiece. GPT based models use BPE and BERT based models use WordPiece. Some models also use SentencePiece to get sentence encodings. Below is hierarchy of Tokenization methods
-
-![](assets/Tokenization_type.png)
-
-3.**Transformer** - A transformer model is a neural network that learns context and thus meaning by tracking relationships in sequential data like the words in this sentence.
-
-4.**Attention** - In LLM, this concept is applied by teaching the model to focus on certain parts of the input data and disregard others to better solve the task at hand.
-
-5.**GPT** - Generative Pre-trained Transformers, commonly known as GPT, are a family of neural network models that uses the transformer architecture
-
-6.**Prompt** - Prompts are the inputs or queries that a user or a program gives to an LLM AI, to get a relevant response from the model.
-
-7.**Prompt Engineering** - Prompt engineering is the process of enhancing the output of large language models (LLMs) like ChatGPT. Carefully crafting input prompts can help the language model understand the information about the input (context) and your desired output.
-
-8.**Hallucination** - LLMs will also sometimes confidently produce information that isn’t real or true, which are typically called “hallucinations”
-
-9.**Context window** - In GPT models, the context window refers to the amount of preceding text that the model can consider when generating a response.
-
-10.**Parameters** - Parameters are the numerical values that chosen by the model. They are learned from data during the training process. The more parameters a model has, the more the model is.
-
-11. **Hyperparameter** - Hyperparameters are the explicitly specified parameters that control the training process. They are essential for optimizing the model. They are set manually by Data Scientist / Machine learning engineer in beginning of training the model
-
+<!-- /TOC -->
 
 # Gen-AI Lifecycle
 Here is diagram of the Gen-AI Lifecycle
@@ -223,15 +208,52 @@ Try GPT-2 Transformer out on your own at live this url
 https://transformer.huggingface.co/doc/gpt2-large
 
 
-### Transformer model architecture from Scratch using pytorch [here](transformers-details/transformers_scratch.ipynb)
+# Transformer model code from Scratch 
+We will look into the actual implementation of transformer model code and its concept in detail for better understanding.
+- [using pytorch](transformers-details/transformers_scratch_pytorch.ipynb)
+
+- [using huggingface](transformers-details/simple_transformer_language_model.ipynb)
 
 
+# Prompt engineering and Prompting types
+  We will learn the following topics in prompt engineering & types
+  1. What is [prompting, prompt engineering & In-Context learning?](prompt-engineering\prompting.md)
+  
+  2. Designing Prompts for different tasks
 
+  * [**Text Summarization**](https://www.promptingguide.ai/introduction/examples#text-summarization)
+  * [**Question Answering**](https://www.promptingguide.ai/introduction/examples#question-answering)
+  * [**Text Classification**](https://www.promptingguide.ai/introduction/examples#text-classification)
+  * [**Code Generation**](https://www.promptingguide.ai/introduction/examples#code-generation)
+  * [**Reasoning**](https://www.promptingguide.ai/introduction/examples#reasoning)
 
+  3. Prompt Engineering techniques
+ 
+  * [**Few-shot Prompts**](https://www.promptingguide.ai/techniques/fewshot)
+  * [**Chain-of-Thought CoT Prompting**](https://www.promptingguide.ai/techniques/cot)
+  * [**Tree of thoughts(TOT)**](https://www.promptingguide.ai/techniques/tot)
+  * [**Self-Consistency**](https://www.promptingguide.ai/techniques/consistency)
+  * [**Generate Knowledge Prompting**](https://www.promptingguide.ai/techniques/knowledge)
+  * [**ReAct**](https://www.promptingguide.ai/techniques/react)
 
+  
+  4. Applications
+  - Progam-Aided learning (PAL)
+  - Generating Data
+  - Generating Code
+  - prompt functions
 
-# prompt engineering and prompting types
-# Generative Configurations
+  5. Risks
+  - prompt Injection
+  - prompt leaking
+  - Jail-breaking
+
+  6. [Reference guide](https://www.promptingguide.ai/)
+
+[pdf download for prompting](resources/22-promptengg.pdf)
+
+# Generative AI Configurations
+
 # Fine-tuning LLM's with PEFT & LoRA
 # Fine-tuning LLM's with RLHF
 # LLM's in applications
