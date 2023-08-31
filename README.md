@@ -217,7 +217,7 @@ We will look into the actual implementation of transformer model code and its co
 
 # Prompt engineering and Prompting types
   We will learn the following topics in prompt engineering & types
-  1. What is [prompting, prompt engineering & In-Context learning?](prompt-engineering\prompting.md)
+  1. What is [prompting, prompt engineering & In-Context learning?](prompt-engineering/prompting.md)
   
   2. Designing Prompts for different tasks
 
