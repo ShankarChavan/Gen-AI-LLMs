@@ -252,8 +252,74 @@ We will look into the actual implementation of transformer model code and its co
 
 [pdf download for prompting](resources/22-promptengg.pdf)
 
-# Generative AI Configurations
+# Generative AI Configurations(or Inference Parameters)
+![Alt text](assets/Infrence_config.png)
 
-# Fine-tuning LLM's with PEFT & LoRA
+- **Temperature**: The temperature should be set according to the task  and domain expectations.
+  A **higher temperature value of 0.7 to 0.9** may be desired, as it can produce more original and diverse texts.
+
+- **Maximum length or tokens**:
+  Set the word count, it makes your responses much cleaner. 
+  
+  Bear in mind that you can only return **2048 tokens**, or about 300–400 words per response. Anything longer may result in a response being cut off.
+  
+  Don't worry, just prompt "continue" and it should keep going (you may need to copy and paste the last sentence or two).
+
+- **Top p**: A hyperparameter that controls the cumulative probability of the candidate tokens that the model can choose from. 
+
+  A lower top p means that only the most probable tokens are considered, while a higher top p means that more tokens are considered. 
+
+  Top p affects the randomness or diversity of the generated text.
+
+  _**Difference between Top p and Temperature**_
+
+  ![Alt text](assets/top_p_vs_temp.png)
+
+- **Frequency penalty**: A hyperparameter that controls the **repetition of words or phrases in the generated text**. 
+
+  A higher frequency penalty means less repetition, while a lower frequency penalty means more repetition. 
+
+
+- **Presence penalty**: A hyperparameter that controls the **novelty of words or phrases in the generated text**. 
+
+  A higher presence penalty means more novelty, while a lower presence penalty means more familiarity.  
+
+  For example, for creative writing, a higher presence penalty value of 0.6 to 0.8 may be desired, as it can encourage the generation of new and original ideas. 
+  
+  For text summarization, a lower presence penalty value of 0.2 to 0.4 may be preferred, as it can ensure the consistency and relevance of the summaries.
+
+  _**Difference between frequency vs Presence penalties**_
+  ![Alt text](assets/freq_vs_pres_penalty.png)
+
+[Article to understand difference between Frequency Vs Presence Penalty](https://medium.com/@KTAsim/frequency-vs-presence-penalty-whats-the-difference-openai-api-51b0c4a7229e) 
+
+
+# Fine-tuning LLM's with PEFT(Parameter Efficient Fine-Tuning)
+
+### Fine tune = update foundation model weights
+(AKA parameter fine tuning)
+
+- Update more layers = better model performance
+
+- Full fine-tuning typically produces one model per task
+  - Serve one model per task
+  - May forget other pre-trained tasks: catastrophic forgetting
+
+- Full fine-tuning LLMs is expensive. How to avoid it?
+  - X-shot learning(we have seen this approach in prompt-engineering)
+  - Parameter-efficient fine tuning
+----
+### Training LLM poses 2 main challenges
+  - Increasing compute power
+  - Increasing file size of model 
+
+### PEFT and LoRa
+
+PEFT is a method that employs various techniques, including LoRa, to efficiently fine-tune large language models. 
+
+LoRa focuses on **adding extra weights to the model while freezing most of the pre-trained network’s parameters**. This approach helps _prevent catastrophic forgetting_, a situation where models forget what they were originally trained on during the full fine-tuning process.
+
+
+
 # Fine-tuning LLM's with RLHF
 # LLM's in applications
