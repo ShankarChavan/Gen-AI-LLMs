@@ -317,7 +317,13 @@ We will look into the actual implementation of transformer model code and its co
 
 PEFT is a method that employs various techniques, including LoRa, to efficiently fine-tune large language models. 
 
-LoRa focuses on **adding extra weights to the model while freezing most of the pre-trained network’s parameters**. This approach helps _prevent catastrophic forgetting_, a situation where models forget what they were originally trained on during the full fine-tuning process.
+LoRa(Low-Rank Adaptation) focuses on **adding extra weights to the model while freezing most of the pre-trained network’s parameters**. This approach helps _prevent catastrophic forgetting_, a situation where models forget what they were originally trained on during the full fine-tuning process.
+
+### Background
+The [Research Paper](https://arxiv.org/abs/2106.09685) about LoRa was published by microsoft researchers in 2021.A library named [Loralib](https://github.com/microsoft/LoRA) was also created on github and later in Feb-2023 it was supported by **PEFT** library from _HuggingFace_.
+
+
+
 
 
 
