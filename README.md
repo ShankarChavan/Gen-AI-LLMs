@@ -151,7 +151,7 @@ Self-attention is the key attributes of the transformer architecture.Let's dive 
 
     **Models**:
     - BART
-    - T
+    - T5
 ----
 3. **Decoder only(autoregressive models)**:
 
@@ -255,6 +255,8 @@ We will look into the actual implementation of transformer model code and its co
 # Generative AI Configurations(or Inference Parameters)
 ![Alt text](assets/Infrence_config.png)
 
+
+
 - **Temperature**: The temperature should be set according to the task  and domain expectations.
   A **higher temperature value of 0.7 to 0.9** may be desired, as it can produce more original and diverse texts.
 
@@ -269,12 +271,25 @@ We will look into the actual implementation of transformer model code and its co
 
   A lower top p means that only the most probable tokens are considered, while a higher top p means that more tokens are considered. 
 
-  Top p affects the randomness or diversity of the generated text.
-
+---
   _**Difference between Top p and Temperature**_
 
   ![Alt text](assets/top_p_vs_temp.png)
 
+
+  Temperature and top_p are two parameters that affect the randomness of the output of a language model, such as GPT-3. 
+  
+  Temperature affects the **confidence of the model** in its top choices, while top_p affects the **number of choices** that the model considers. 
+  
+  A low temperature makes the output more **deterministic and less diverse**, while a high temperature makes the output more **stochastic and more diverse**. 
+  
+  Top_p sampling **selects only the tokens that have a cumulative probability mass** above a certain threshold.
+  
+  ![Alt text](assets/temp_vs_top_p.png)
+
+  [Above table from openAI community blogpost](https://community.openai.com/t/cheat-sheet-mastering-temperature-and-top-p-in-chatgpt-api-a-few-tips-and-tricks-on-controlling-the-creativity-deterministic-output-of-prompt-responses/172683)
+
+---
 - **Frequency penalty**: A hyperparameter that controls the **repetition of words or phrases in the generated text**. 
 
   A higher frequency penalty means less repetition, while a lower frequency penalty means more repetition. 
@@ -317,14 +332,72 @@ We will look into the actual implementation of transformer model code and its co
 
 PEFT is a method that employs various techniques, including LoRa, to efficiently fine-tune large language models. 
 
-LoRa(Low-Rank Adaptation) focuses on **adding extra weights to the model while freezing most of the pre-trained network’s parameters**. This approach helps _prevent catastrophic forgetting_, a situation where models forget what they were originally trained on during the full fine-tuning process.
+LoRa(Low-Rank Adaptation) focuses on **adding extra weights to the model while freezing most of the pre-trained network’s parameters**. This approach helps _prevent catastrophic forgetting_, a situation where models forgets what they were originally trained on during the full fine-tuning process.
 
-### Background
+### Background 
 The [Research Paper](https://arxiv.org/abs/2106.09685) about LoRa was published by microsoft researchers in 2021.A library named [Loralib](https://github.com/microsoft/LoRA) was also created on github and later in Feb-2023 it was supported by **PEFT** library from _HuggingFace_.
 
 
+### Background on Fine tuning
+![Alt text](assets/finetuning_overview.png)
 
 
+
+
+### SFT Finetuning approaches
+
+Following are the finetuning approaches
+
+![Alt text](assets/finetuning_approaches.png)
+
+
+## **what is Instruction fine-tuning?**
+
+![Alt text](assets/finetune_1.png)
+
+## What are task specific Instructions or examples
+
+**1. Example classify the review**
+![Alt text](assets/finetune_example1.png)
+
+**2. Example Summarize or Translate the sentence**
+
+![Alt text](assets/finetune_example2.png)
+
+For this we first need to Generate data for task specific examples.
+
+We can use [Prompt instruction template](https://github.com/bigscience-workshop/promptsource) to generate the instruction data.
+
+
+![Alt text](assets/instruction-data-template-example.png)
+
+Let's look at how the instruction data looks like on HuggingFace
+
+- [dolly-data-15k](https://huggingface.co/datasets/databricks/databricks-dolly-15k)
+
+- [dialog-summarization-12.5k](https://huggingface.co/datasets/knkarthick/dialogsum)
+
+### LoRa(Low Rank Adaption)?
+
+![Alt text](assets/Lora_overview.png)
+
+We freeze the existing weights of pretrained model and perform the training on the new instruction data using the LoRa.  
+
+### What is Rank of Matrix?
+
+![Alt text](rank_matrix.png)
+
+[Blog to understand how to calculate Rank of Matrix](https://byjus.com/jee/rank-of-a-matrix-and-special-matrices/)
+
+![Alt text](assets/Lora_matrix_decompose.png)
+
+![Alt text](assets/Lora_performance_vs_parameter.png)
+
+![Alt text](assets/Lora_perf_task_specific.png)
+
+We can see that after **Rank-8** there is not much of an improvement and accuracy remain consistent.
+
+Now we can start with Code-walkthrough in notebook.
 
 
 # Fine-tuning LLM's with RLHF
