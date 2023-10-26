@@ -505,13 +505,6 @@ Example of RL in tic-tac-toe
 
 ![Alt text](assets/RL_tic_tac_toe.png)
 
-RL policy which was used in RLHF was **PPO(Proximal Policy Optimization)**
-
-Proximal Policy Optimization (PPO) is a popular model-free reinforcement learning algorithm that is used to train agents to perform tasks in an environment. It is an iterative algorithm that improves the policy through **trial and error**.
-
-For detail understanding PPO you can refer to [this link](https://huggingface.co/blog/deep-rl-ppo).
-
-
 
 ![Alt text](assets/RL_fine-tune-LLMs.png)
 
@@ -519,7 +512,15 @@ For detail understanding PPO you can refer to [this link](https://huggingface.co
 
 **Example**: A custom toxicity classification model can be trained on text data which can then be used to evaluate the LLM response for toxicity.
 
-Note: Training a reward model requires us to prepare the data with human feedback for each of the response with rank ideally called as human rank completion pair.
+_**Note**: Training a reward model requires us to prepare the data with human feedback for each of the response with rank ideally called as human rank completion pair_.
+
+RL policy or algorithm which was used in RLHF was **PPO(Proximal Policy Optimization)**
+
+Proximal Policy Optimization (PPO) is a popular model-free reinforcement learning algorithm that is used to train agents to perform tasks in an environment. It is an iterative algorithm that improves the policy through **trial and error**.
+
+For detail understanding PPO you can refer to [this link](https://huggingface.co/blog/deep-rl-ppo).
+
+## Reward Model
 
 ![Alt text](assets/RL_reward_model.png)
 
