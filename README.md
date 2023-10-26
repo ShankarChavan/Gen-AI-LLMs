@@ -405,6 +405,76 @@ Now we can start with Code-walkthrough in notebook.
 As a Next step we can even automate the fine-tuning step even further using [HuggingFace AutoTrian](https://huggingface.co/docs/autotrain/index) library.
 
 
+```
+pip install autotrain-advanced
+```
+
+Once we have pip installed the autotrain-advanced and kept our data in `data` folder in local system. Use the following code 
+
+```python
+# set the hyperparameter and variables
+
+project_name = 'my_autotrain_llm'
+model_name = 'user/llama-2-7b-hf-small-shards' 
+
+learning_rate = 2e-4 
+num_epochs = 1 
+batch_size = 1 
+block_size = 1024 
+trainer = "sft" 
+warmup_ratio = 0.1 
+weight_decay = 0.01 
+gradient_accumulation = 4 
+use_fp16 = True 
+use_peft = True 
+use_int4 = True 
+lora_r = 16 
+lora_alpha = 32 
+lora_dropout = 0.05 
+
+# store all parameters in environment variable
+import os
+os.environ["PROJECT_NAME"] = project_name
+os.environ["MODEL_NAME"] = model_name
+os.environ["PUSH_TO_HUB"] = str(push_to_hub)
+os.environ["HF_TOKEN"] = hf_token
+os.environ["REPO_ID"] = repo_id
+os.environ["LEARNING_RATE"] = str(learning_rate)
+os.environ["NUM_EPOCHS"] = str(num_epochs)
+os.environ["BATCH_SIZE"] = str(batch_size)
+os.environ["BLOCK_SIZE"] = str(block_size)
+os.environ["WARMUP_RATIO"] = str(warmup_ratio)
+os.environ["WEIGHT_DECAY"] = str(weight_decay)
+os.environ["GRADIENT_ACCUMULATION"] = str(gradient_accumulation)
+os.environ["USE_FP16"] = str(use_fp16)
+os.environ["USE_PEFT"] = str(use_peft)
+os.environ["USE_INT4"] = str(use_int4)
+os.environ["LORA_R"] = str(lora_r)
+os.environ["LORA_ALPHA"] = str(lora_alpha)
+os.environ["LORA_DROPOUT"] = str(lora_dropout)
+
+```
+
+run the below code in shell or notebook
+
+```sh
+!autotrain llm \
+--train \
+--model ${MODEL_NAME} \
+--project-name ${PROJECT_NAME} \
+--data-path data/ \
+--text-column text \
+--lr ${LEARNING_RATE} \
+--batch-size ${BATCH_SIZE} \
+--epochs ${NUM_EPOCHS} \
+--block-size ${BLOCK_SIZE} \
+--warmup-ratio ${WARMUP_RATIO} \
+--lora-r ${LORA_R} \
+--lora-alpha ${LORA_ALPHA} \
+--lora-dropout ${LORA_DROPOUT} \
+--weight-decay ${WEIGHT_DECAY} \
+--gradient-accumulation ${GRADIENT_ACCUMULATION} 
+```
 
 
 # Fine-tuning LLM's with RLHF
@@ -435,7 +505,12 @@ Example of RL in tic-tac-toe
 
 ![Alt text](assets/RL_tic_tac_toe.png)
 
-Extend RL to fine-tune LLM's
+RL policy which was used in RLHF was **PPO(Proximal Policy Optimization)**
+
+Proximal Policy Optimization (PPO) is a popular model-free reinforcement learning algorithm that is used to train agents to perform tasks in an environment. It is an iterative algorithm that improves the policy through **trial and error**.
+
+For detail understanding PPO you can refer to [this link](https://huggingface.co/blog/deep-rl-ppo).
+
 
 
 ![Alt text](assets/RL_fine-tune-LLMs.png)
@@ -464,4 +539,7 @@ We can stop the training by setting max number of iterations or by threshold val
 
 Usually ~20,000 iterations should be good enough.  
 
-# LLM's in applications
+# LLM apps (LLM's in application)
+- RAG (Retrieval Augmented Generation)
+- Code generation
+
