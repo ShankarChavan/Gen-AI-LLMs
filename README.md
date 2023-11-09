@@ -541,6 +541,31 @@ We can stop the training by setting max number of iterations or by threshold val
 Usually ~20,000 iterations should be good enough.  
 
 # LLM apps (LLM's in application)
-- RAG (Retrieval Augmented Generation)
-- Code generation
+## RAG (Retrieval Augmented Generation)
+
+![Alt text](assets/LLM_embeddings_gen_seq.png)
+
+ ### Ingestion Procress in RAG
+  - Take a set of proprietary documents
+  - Split them up into smaller chunks
+  - Create an embedding for each document
+
+![Alt text](assets/LLM_RAG_Query.png)
+
+### Query Process in RAG
+  - Create an embedding for the query
+  - Find the most similar documents in the embedding space
+  - Pass those documents, along with the original query, into a language model to generate an answer
+
+Let's Look at live examples of Chatbot with using pdf document.
+
+Code is in the folder llm-apps/llama2-using-chainlit 
+
+Tools we are going to leverage
+  - Langchain for QARetriever,Pdf,textsplit
+  - FAISS for vectorStorage DB
+  - HuggingFaceEmbeddings(Sentence_transformers) for creating embeddings of text chunks
+  - Chainlit for Chatbot interface
+
+
 
